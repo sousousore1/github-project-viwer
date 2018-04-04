@@ -1,0 +1,48 @@
+<h1><%= @project.name %></h1>
+<div class="row justify-content-center">
+  <% @columns.each do |column, cards| %>
+    <div class="col-12 col-md">
+      <h2>
+        <span class="rounded-circle p-0 small text-center d-inline-block mr-2" style="width:2rem;height:2rem;line-height:2rem;background-color:whitesmoke;"><%= cards.size %></span><%= column.name %>
+      </h2>
+      <ul class="list-unstyled">
+        <% cards.each do |card, issue| %>
+          <li>
+            <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= state2icon issue.state %>
+                  <%= link_to issue.title, issue.html_url, target: '_blank' %>
+                </h5>
+                <small>
+                  #<%= issue.number %> opened by <%= issue.user.login %>
+                </small>
+                <div class="card-text container">
+                  <p>
+                    <%= card.note %>
+                  </p>
+                  <div class="row">
+                    <div class="col">
+                      <ul class="list-unstyled row">
+                        <% issue.labels.each do |label| %>
+                          <li class="col-auto mr-2 small px-2" style="background-color: <%= "\##{label.color}" %>">
+                            <%= label.name %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                    <ul class="col-auto">
+                      <% issue.assignees.each do |assignee| %>
+                        <%= image_tag assignee.avatar_url, class: 'rounded-circle', width: 25 %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+/**
+ * This application following SMACSS framework.
+ * Base is designed that element's default styles.
+ * Layout is designed that separated area's styles in page.
+ * Module is designed that reusable parts styles.
+ * State is designed that specified style on layout and modules and so on. (It must be used is- prefix)
+ */
+@import "bases/*";
+//@import "layouts/*";
+//@import "modules/*";
+//@import "states/*";

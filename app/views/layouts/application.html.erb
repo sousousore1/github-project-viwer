@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Settings.site.name %></title>
+  <meta name="viewport" content="width=360,initial-scale=1">
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body>
+<%= render 'header' %>
+<div class="mb-auto">
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
+<%= render 'footer' %>
+</body>
+</html>

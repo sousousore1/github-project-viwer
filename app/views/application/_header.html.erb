@@ -1,0 +1,20 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag 'github-logo.png', class: 'rounded-circle', width: 30, style: 'vertical-align:top;' %>
+      <%= Settings.site.name %>
+    <% end %>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <% @repositories.each do |repository| %>
+          <li class="nav-item">
+            <%= link_to repository.name, repository_projects_path(repository.full_name), class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

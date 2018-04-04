@@ -1,0 +1,21 @@
+@import "bootstrap";
+@import "font-awesome";
+@import "zurui-sass";
+@import "../variables";
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: image-url('lightpaperfibers.png');
+  color: $color-main;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
