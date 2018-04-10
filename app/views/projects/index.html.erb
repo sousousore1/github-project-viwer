@@ -1,4 +1,4 @@
-<h1><%= repository_name %></h1>
+<h1><%= @current_repository.full_name %></h1>
 <div class="table-responsive-md">
   <table class="table table-hover text-nowrap">
     <thead class="thead-light">
@@ -11,7 +11,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td>
-          <%= link_to project.name, repository_project_path(repository_name, project.id) %>
+          <%= link_to project.name, repository_project_path(@current_repository.full_name, project.id) %>
         </td>
         <td>
           <%= project.body.presence || 'No description' %>

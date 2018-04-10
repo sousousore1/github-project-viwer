@@ -7,8 +7,4 @@ module ProjectsHelper
         content_tag('i', nil, class: 'fa fa-check-circle text-danger')
     end
   end
-
-  def repository_name
-    params[:repository_id] || @repositories.first.full_name
-  end
 end

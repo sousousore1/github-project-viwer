@@ -19,6 +19,7 @@ gem 'zurui-sass-rails'
 gem 'autoprefixer-rails'
 gem 'settingslogic'
 gem 'parallel'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'sqlite3'
