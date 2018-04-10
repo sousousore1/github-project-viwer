@@ -28,10 +28,31 @@
         <div class="card-title">
           <small><%= @issue.user.login %> commented <%= time_ago_in_words @issue.created_at %> ago</small>
         </div>
-        <div class="card-text">
+        <div class="card-text edit-content">
           <%= markdown @issue.body %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% @comments.each do |comment| %>
+  <div class="row mt-2">
+    <div class="col-md-1 d-none d-md-block">
+      <div class="text-center">
+        <%= image_tag comment.user.avatar_url, class: 'rounded', width: 60 %>
+      </div>
+    </div>
+    <div class="col-12 col-md-11">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <small><%= comment.user.login %> commented <%= time_ago_in_words comment.created_at %> ago</small>
+          </div>
+          <div class="card-text edit-content">
+            <%= markdown comment.body %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
