@@ -15,3 +15,12 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function () {
+  $('.edit-content table').addClass('table table-bordered');
+  $('.edit-content code').each(function (_, element) {
+    var $element = $(element);
+    $element.text($element.text().replace(/^\n/, ''));
+  });
+});
+
