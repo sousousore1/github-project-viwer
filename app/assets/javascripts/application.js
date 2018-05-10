@@ -22,5 +22,11 @@ $(function () {
     var $element = $(element);
     $element.text($element.text().replace(/^\n/, ''));
   });
+  $('.edit-content').each(function (_, element) {
+    var html = $(element).html();
+    var pattern = /(#(\d+))/g;
+    var replacer = '<a href=\'' + location.href.replace(/\d+$/, '$2') + '\'>$1</a>';
+    var replaced = html.replace(pattern, replacer);
+    $(element).html(replaced);
+  });
 });
-
