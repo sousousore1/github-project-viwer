@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = @github_client.projects(@current_repository.full_name)
+    @issues = @github_client.issues(@current_repository.full_name)
   end
 
   def show

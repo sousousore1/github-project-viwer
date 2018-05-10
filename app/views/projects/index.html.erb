@@ -1,4 +1,5 @@
 <h1><%= @current_repository.full_name %></h1>
+<h2>Projects</h2>
 <div class="table-responsive-md">
   <table class="table table-hover text-nowrap">
     <thead class="thead-light">
@@ -15,6 +16,45 @@
         </td>
         <td>
           <%= project.body.presence || 'No description' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex">
+    <h2>Issues</h2>
+    <span class="badge badge-secondary my-auto ml-2">
+      <%= @issues.size %>
+    </span>
+  </div>
+  <table class="table table-hover text-nowrap">
+    <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= badge_to(issue) %></td>
+        <td>
+          <div class="d-flex">
+            <%= link_to issue.title, repository_issue_path(@current_repository.full_name, issue.number), class: 'd-block' %>
+            <% issue.labels.each do |label| %>
+              <span class="badge my-auto ml-1" style="background-color: <%= "\##{label.color}" %>">
+                <%= label.name %>
+              </span>
+            <% end %>
+          </div>
+          <small>
+            #<%= issue.number %> opened this issue <%= time_ago_in_words issue.created_at %> by <%= issue.user.login %>
+          </small>
+        </td>
+        <td class="align-middle">
+          <% issue.assignees.each do |assignee| %>
+            <%= image_tag assignee.avatar_url, class: 'rounded', width: 30 %>
+          <% end %>
+        </td>
+        <td class="align-middle">
+          <% unless issue.comments.zero? %>
+            <i class="fa fa-comment-o"></i>
+            <span><%= issue.comments %></span>
+          <% end %>
         </td>
       </tr>
     <% end %>
