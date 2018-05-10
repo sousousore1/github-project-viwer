@@ -10,10 +10,18 @@
           <li>
             <div class="card mb-2">
               <div class="card-body">
-                <h5 class="card-title">
-                  <%= state2icon issue.state %>
-                  <%= link_to issue.title, repository_issue_path(@current_repository.full_name, issue.number) %>
-                </h5>
+                <div class="d-flex">
+                  <h5 class="card-title">
+                    <%= state2icon issue.state %>
+                    <%= link_to issue.title, repository_issue_path(@current_repository.full_name, issue.number) %>
+                  </h5>
+                  <% unless issue.comments.zero? %>
+                    <div class="align-middle ml-auto text-nowrap">
+                      <i class="fa fa-comment-o"></i>
+                      <span><%= issue.comments %></span>
+                    </div>
+                  <% end %>
+                </div>
                 <small>
                   #<%= issue.number %> opened by <%= issue.user.login %>
                 </small>
