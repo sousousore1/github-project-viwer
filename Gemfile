@@ -6,12 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.1.4'
-gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'jbuilder', '~> 2.5'
-gem 'octokit', '~> 4.0'
+gem 'rails', '~> 5.2.0'
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jbuilder'
+gem 'octokit'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
@@ -20,24 +20,26 @@ gem 'autoprefixer-rails'
 gem 'settingslogic'
 gem 'parallel'
 gem 'redcarpet'
+gem 'bootsnap'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 group :production do
   gem 'pg'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
