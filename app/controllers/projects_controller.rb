@@ -12,9 +12,10 @@ class ProjectsController < ApplicationController
     @columns = Parallel.map(project_columns, in_threads: project_columns.size) do |column|
       column_cards = @github_client.column_cards(column.id)
       cards = Parallel.map(column_cards, in_threads: column_cards.size) do |card|
-        next unless card.content_url
-        issue_number = card.content_url.split('/').last
-        issue = @github_client.issue(@current_repository.full_name, issue_number)
+        if card.content_url.present?
+          issue_number = card.content_url.split('/').last
+          issue = @github_client.issue(@current_repository.full_name, issue_number)
+        end
         [card, issue]
       end.compact.to_h
       [column, cards]

@@ -1,0 +1,36 @@
+<div class="card-body">
+  <div class="d-flex">
+    <h5 class="card-title">
+      <%= state2icon issue.state %>
+      <%= link_to issue.title, repository_issue_path(@current_repository.full_name, issue.number) %>
+    </h5>
+    <% unless issue.comments.zero? %>
+      <div class="align-middle ml-auto text-nowrap">
+        <i class="fa fa-comment-o"></i>
+        <span><%= issue.comments %></span>
+      </div>
+    <% end %>
+  </div>
+  <small>
+    #<%= issue.number %> opened by <%= issue.user.login %>
+  </small>
+  <div class="card-text container">
+    <p>
+      <%= card.note %>
+    </p>
+    <div class="row">
+      <div class="col">
+        <% issue.labels.each do |label| %>
+                        <span class="badge" style="background-color: <%= "\##{label.color}" %>">
+                          <%= label.name %>
+                        </span>
+        <% end %>
+      </div>
+      <ul class="col-auto">
+        <% issue.assignees.each do |assignee| %>
+          <%= image_tag assignee.avatar_url, class: 'rounded-circle', width: 25 %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
