@@ -11,6 +11,7 @@ module GithubAccessible
 
   def set_github_client
     @github_client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
+    @github_client.auto_paginate = true
   end
 
   def set_repositories
